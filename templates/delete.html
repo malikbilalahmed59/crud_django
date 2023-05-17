@@ -14,9 +14,11 @@
 
 </head>
 <body>
+{% include 'home.html' %}
+
 <div >
-		<div class="modal-dialog">
-			<div class="modal-content">
+		<div class="modal-dialog" style="margin-top:-189px">
+			<div class="modal-content" >
 				<form method="post">
 					{% csrf_token %}
 

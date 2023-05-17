@@ -22,6 +22,7 @@ class HomeView(View):
         return render(request, 'home.html')
 
 def  update(request,pk):
+    users = UserInformation.objects.all()
     user =UserInformation.objects.get(id=pk)
     form=Userform(instance=user)
     if request.method == 'POST':
@@ -29,7 +30,7 @@ def  update(request,pk):
         if form.is_valid():
             form.save()
             return redirect('home')
-    context={'form':form}
+    context={'form':form,'users':users}
     return render(request,'update.html',context)
 def delete(request,pk):
     user=UserInformation.objects.get(id=pk)

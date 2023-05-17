@@ -15,14 +15,17 @@
 </head>
 
 <body>
+{% include 'home.html' %}
 <div >
-	<div class="modal-dialog">
+	<div class="modal-dialog" style="margin-top:-220px">
 		<div class="modal-content">
 			<form method="post">
 				{% csrf_token%}
 				<div class="modal-header">
-					<h4 class="modal-title">Edit User</h4>
-<!--					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+					<h4 class="modal-title" style="display:inline;">Edit User</h4>
+					<a href ="{% url 'home' %}"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+					</button> </a>
 				</div>
 				<div class="modal-body">
 					<div class="form-group">

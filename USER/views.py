@@ -19,7 +19,8 @@ class HomeView(View):
             if form.is_valid():
                 form.save()
                 return redirect('home')
-        return render(request, 'home.html')
+        context = {'users': self.users, 'form': self.form}
+        return render(request, 'home.html',context)
 
 def  update(request,pk):
     users = UserInformation.objects.all()
@@ -33,11 +34,13 @@ def  update(request,pk):
     context={'form':form,'users':users}
     return render(request,'update.html',context)
 def delete(request,pk):
+    users = UserInformation.objects.all()
     user=UserInformation.objects.get(id=pk)
     if request.method=="POST":
         user.delete()
         return redirect('home')
-    return render(request,'delete.html',{'obj':user})
+    context={'users':users}
+    return render(request,'delete.html',context)
         # id1 = request.GET.get('id', None)
         # first_name1 = request.GET.get('first_name', None)
         # last_name1 = request.GET.get('last_name', None)
